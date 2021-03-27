@@ -39,7 +39,7 @@ pipeline {
         }
         stage('Deploy To Kubernetes') {
             when {
-                branch 'master'
+                branch 'main'
             }
             steps {
                 kubernetesDeploy(
