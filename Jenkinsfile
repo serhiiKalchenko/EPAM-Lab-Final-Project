@@ -4,7 +4,7 @@ pipeline {
         DOCKER_IMAGE_NAME = "serhiikalchenko/spring-petclinic-image"
     }
     stages {
-        stage('Build') {
+        stage('Build App') {
             steps {
                 echo 'Running build automation'
                 sh './mvnw package'
@@ -37,24 +37,16 @@ pipeline {
                 }
             }
         }
-        stage('Deploy To Stage-Server') {
+        stage('Deploy To Kubernetes') {
             when {
-                branch 'main'
+                branch 'master'
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'stage_server_creds', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
-                    script {
-                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$STAGE_SERVER_IP \"docker pull $DOCKER_IMAGE_NAME:${env.BUILD_NUMBER}\""
-                        sh ''
-                        try {
-                            sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$STAGE_SERVER_IP \"docker stop spring-petclinic\""
-                            //sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$STAGE_SERVER_IP \"let BUILD=${env.BUILD_NUMBER}-1; docker rmi serhiikalchenko/spring-petclinic-image:$BUILD\""
-                        } catch (err) {
-                            echo: 'caught error: $err'
-                        }
-                        sh "sshpass -p '$USERPASS' -v ssh -o StrictHostKeyChecking=no $USERNAME@$STAGE_SERVER_IP \"docker run -d --rm --name spring-petclinic -p 8080:8080 $DOCKER_IMAGE_NAME:${env.BUILD_NUMBER}\""
-                    }
-                }
+                kubernetesDeploy(
+                    kubeconfigId: 'kubeconfig',
+                    configs: 'spring-petclinic-kube.yml',
+                    enableConfigSubstitution: true
+                )
             }
         }
     }
