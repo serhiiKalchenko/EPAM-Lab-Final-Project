@@ -3,6 +3,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: spring-petclinic-service
+  namespace: default
 spec:
   type: NodePort
   selector:
