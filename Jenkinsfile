@@ -4,14 +4,14 @@ pipeline {
         DOCKER_IMAGE_NAME = "serhiikalchenko/spring-petclinic-image"
     }
     stages {
-        /*
+        
         stage('Build App') {
             steps {
                 echo 'Running build automation'
                 sh './mvnw package'
             }
         }
-        */
+       
         stage('Build Docker Image') {
             when {
                 branch 'main'
@@ -25,6 +25,7 @@ pipeline {
                 }
             }
         }
+        
         stage('Push Docker Image') {
             when {
                 branch 'main'
@@ -38,16 +39,17 @@ pipeline {
                 }
             }
         }
+        
         stage('Deploy To Kubernetes') {
             when {
                 branch 'main'
             }
             steps {
-                kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'spring-petclinic-kube.yml',
-                    enableConfigSubstitution: true
-                )
+                script{
+                    /* def image_id = $DOCKER_IMAGE_NAME + ":$BUILD_NUMBER" */
+                    /*  --extra-vars \"image_id=${image_id}\" */
+                    sh "ansible-playbook deploy_to_kubernetes.yml"
+                }
             }
         }
     }
