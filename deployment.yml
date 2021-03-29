@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: spring-petclinic-deployment
+  namespace: default
   labels:
     app: spring-petclinic
 spec:
