@@ -23,4 +23,4 @@
   - name: Create a Deployment
     kubernetes.core.k8s:
       state: present
-      src: deployment.yml
+      definition: "{{ lookup('file', 'deployment.yml') | from_yaml }}"
