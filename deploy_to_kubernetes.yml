@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: kubernetes
   collections:
     - kubernetes.core.k8s
   tasks:
