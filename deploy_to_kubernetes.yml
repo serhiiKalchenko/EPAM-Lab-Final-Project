@@ -2,7 +2,7 @@
   collections:
     - kubernetes.core.k8s
   tasks:
-  - name: Create a Service
+  - name: Create a Service in Kubernetes cluster
     kubernetes.core.k8s:
       state: present
       definition:
@@ -20,7 +20,7 @@
             port: 8080
             nodePort: 8080
 
-  - name: Create a Deployment
+  - name: Create a Deployment in Kubernetes cluster
     kubernetes.core.k8s:
       state: present
       definition: "{{ lookup('file', 'deployment.yml') | from_yaml }}"
