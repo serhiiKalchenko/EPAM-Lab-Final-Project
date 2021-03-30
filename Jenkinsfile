@@ -4,14 +4,14 @@ pipeline {
         DOCKER_IMAGE_NAME = "serhiikalchenko/spring-petclinic-image"
     }
     stages {
-        
+        /*
         stage('Build App') {
             steps {
                 echo 'Running build automation'
                 sh './mvnw package'
             }
         }
-        
+        */
         stage('Build Docker Image') {
             when {
                 branch 'main'
