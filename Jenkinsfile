@@ -48,9 +48,8 @@ pipeline {
             }
             steps {
                 script{
-                    def image = "$DOCKER_IMAGE_NAME" + ":$BUILD_NUMBER"
-                     
-                    sh "ansible-playbook deploy_to_kubernetes.yml --extra-vars \"DOCKER_IMAGE_NAME_BUILD_NUMBER=${image}\""
+                    // ansible-playbook deploy_to_kubernetes.yml --extra-vars "DOCKER_IMAGE_NAME=serhiikalchenko/spring-petclinic-image BUILD_NUMBER=20"                
+                    sh "ansible-playbook deploy_to_kubernetes.yml --extra-vars \"DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME} BUILD_NUMBER=${env.BUILD_NUMBER}\""
                 }
             }
         }
