@@ -14,7 +14,7 @@
           labels:
             app: spring-petclinic
         spec:
-          replicas: 8
+          replicas: 5
           selector:
             matchLabels:
               app: spring-petclinic
