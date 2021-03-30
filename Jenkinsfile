@@ -48,9 +48,9 @@ pipeline {
             }
             steps {
                 script{
-                    /* def image_id = $DOCKER_IMAGE_NAME + ":$BUILD_NUMBER" */
-                    /*  --extra-vars \"image_id=${image_id}\" */
-                    sh "ansible-playbook deploy_to_kubernetes.yml"
+                    def image_id = $DOCKER_IMAGE_NAME + ":$BUILD_NUMBER"
+                     
+                    sh "ansible-playbook deploy_to_kubernetes.yml --extra-vars \"image_id=${image_id}\""
                 }
             }
         }
