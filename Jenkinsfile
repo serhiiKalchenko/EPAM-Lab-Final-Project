@@ -4,14 +4,14 @@ pipeline {
         DOCKER_IMAGE_NAME = "serhiikalchenko/spring-petclinic-image"
     }
     stages {
-        
+        /*
         stage('Build App') {
             steps {
                 echo 'Running build automation'
                 sh './mvnw package'
             }
         }
-        
+        */
         stage('Build Docker Image') {
             when {
                 branch 'main'
@@ -48,7 +48,7 @@ pipeline {
             }
             steps {
                 script{
-                    def image_id = $DOCKER_IMAGE_NAME + ":$BUILD_NUMBER"
+                    def image_id = "$DOCKER_IMAGE_NAME" + ":$BUILD_NUMBER"
                      
                     sh "ansible-playbook deploy_to_kubernetes.yml --extra-vars \"image_id=${image_id}\""
                 }
