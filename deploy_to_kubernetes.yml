@@ -1,4 +1,5 @@
-- hosts: kubernetes
+- name: Deployment to Kubernetes cluster!
+  hosts: tag_Name_kube_control
   collections:
     - kubernetes.core.k8s
   tasks:
