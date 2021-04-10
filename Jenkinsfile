@@ -35,7 +35,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_creds') {
-                        app.push("${env.BUILD_NUMBER}")
+                        app.push("${BUILD_NUMBER}")
                         app.push("latest")
                     }
                 }
@@ -49,7 +49,7 @@ pipeline {
             steps {
                 script{
                     // |ansible-playbook deploy_to_kubernetes.yml --extra-vars "DOCKER_IMAGE_NAME=serhiikalchenko/spring-petclinic-image BUILD_NUMBER=20"|               
-                    sh "ansible-playbook deploy_to_kubernetes.yml --extra-vars \"DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME} BUILD_NUMBER=${env.BUILD_NUMBER}\""
+                    sh "ansible-playbook deploy_to_kubernetes.yml --extra-vars \"DOCKER_IMAGE_NAME=${DOCKER_IMAGE_NAME} BUILD_NUMBER=${BUILD_NUMBER}\""
                 }
             }
         }
