@@ -50,11 +50,12 @@ pipeline {
         }
         */
     }
-    /*
+    
     post {
         cleanup {
             sh "docker rmi ${REGISTRY}/${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
+            sh "docker rmi ${REGISTRY}/${DOCKER_IMAGE_NAME}:latest"
         }
     }
-    */
+    
 }
