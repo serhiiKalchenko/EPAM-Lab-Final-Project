@@ -15,7 +15,9 @@ pipeline {
         
         stage('Build App') {
             when {
-                params.Build_App == true
+                expression {
+                    params.Build_App == true
+                }
             }            
             steps {
                 echo 'Running build automation'
