@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE_NAME = "serhiikalchenko/spring-petclinic-image"
+        REGISTRY = "registry.hub.docker.com"
     }
     stages {
         
@@ -50,7 +51,7 @@ pipeline {
     }
     post {
         cleanup {
-            sh "docker rmi ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
+            sh "docker rmi ${REGISTRY}/${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
         }
     }
 }
