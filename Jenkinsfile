@@ -5,21 +5,21 @@ pipeline {
         REGISTRY = "registry.hub.docker.com"
     }
     stages {
-        
+        /*
         stage('Build App') {
             steps {
                 echo 'Running build automation'
                 sh './mvnw package'
             }
         }
-        
+        */
         stage('Build Docker Image') {
             when {
                 branch 'main'
             }
             steps {
                 script {
-                    app = docker.build("$REGISTRY/$DOCKER_IMAGE_NAME")       
+                    app = docker.build("${REGISTRY}/${DOCKER_IMAGE_NAME}")       
                 }
             }
         }
