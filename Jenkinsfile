@@ -33,7 +33,7 @@ pipeline {
                 echo "You have chosen VERSION=${params.REGISTRY}"
                 echo "You have chosen BUILD_ID=${params.BUILD_ID}"
                 script {
-                    app = docker.build("${REGISTRY}/${DOCKER_IMAGE_NAME}")       
+                    app = docker.build("${params.REGISTRY}/${DOCKER_IMAGE_NAME}")       
                 }
             }
         }
@@ -67,8 +67,8 @@ pipeline {
     
     post {
         cleanup {
-            sh "docker rmi ${REGISTRY}/${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
-            sh "docker rmi ${REGISTRY}/${DOCKER_IMAGE_NAME}:latest"
+            sh "docker rmi ${params.REGISTRY}/${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
+            sh "docker rmi ${params.REGISTRY}/${DOCKER_IMAGE_NAME}:latest"
         }
     }
     
