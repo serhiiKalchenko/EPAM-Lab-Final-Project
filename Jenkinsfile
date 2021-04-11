@@ -23,7 +23,7 @@ pipeline {
                 }
             }
         }
-        
+        /*
         stage('Push Docker Image') {
             when {
                 branch 'main'
@@ -48,10 +48,13 @@ pipeline {
                 }
             }
         }
+        */
     }
+    /*
     post {
         cleanup {
             sh "docker rmi ${REGISTRY}/${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
         }
     }
+    */
 }
