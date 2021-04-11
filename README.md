@@ -4,8 +4,8 @@ This pipeline build Java application and deploy it into Kubernetes cluster.
 
 ### Technologies:
 - Jenkins: CI/CD tool
-- Terraform: provision infrastructure
-- Ansible: configuration infrastructure
+- Terraform: infrastructure provision 
+- Ansible: infrastructure configuration tool
 - Kubernetes: container orchestration tool
 - Docker: container engine
 
