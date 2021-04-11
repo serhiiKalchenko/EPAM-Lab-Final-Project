@@ -48,4 +48,9 @@ pipeline {
             }
         }
     }
+    post {
+        cleanup {
+            sh "docker rmi ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
+        }
+    }
 }
