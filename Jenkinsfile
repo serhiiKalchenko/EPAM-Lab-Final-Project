@@ -4,20 +4,32 @@ pipeline {
         DOCKER_IMAGE_NAME = "serhiikalchenko/spring-petclinic-image"
         REGISTRY = "registry.hub.docker.com"
     }
+
+    parameters{
+        string(name: 'REGISTRY', defaultValue: 'registry.hub.docker.com', description: 'Choose the Registry for images')
+        choice(name: 'BUILD_ID', choices: ['latest', '1', '5', '10'], description: 'Version to deploy on Kubernetes cluster')
+        booleanParam(name: 'Build_App', defaultValue: false, description: "Should we run the 'Build App' stage?")
+    }
+
     stages {
-        /*
+        
         stage('Build App') {
+            when {
+                params.Build_App == true
+            }            
             steps {
                 echo 'Running build automation'
                 sh './mvnw package'
             }
         }
-        */
+    
         stage('Build Docker Image') {
             when {
                 branch 'main'
             }
             steps {
+                echo "You have chosen VERSION=${params.REGISTRY}"
+                echo "You have chosen BUILD_ID=${params.BUILD_ID}"
                 script {
                     app = docker.build("${REGISTRY}/${DOCKER_IMAGE_NAME}")       
                 }
