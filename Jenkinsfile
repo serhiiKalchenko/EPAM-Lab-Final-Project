@@ -1,3 +1,5 @@
+def groovy
+
 pipeline {
     agent any
     environment {
@@ -14,9 +16,10 @@ pipeline {
         
         stage('Show Parameters') {
             steps {
-                echo "Build_App=${params.Build_App}"
-                echo "REGISTRY=${params.REGISTRY}"
-                echo "BUILD_ID=${params.BUILD_ID}"
+                script {
+                    groovy = load ('groovy.script')
+                    groovy.showParams()
+                }
             }
         }
         
