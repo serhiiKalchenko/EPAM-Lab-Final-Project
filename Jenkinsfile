@@ -5,8 +5,9 @@ pipeline {
     }
 
     parameters{
-        string(name: 'REGISTRY', defaultValue: 'registry.hub.docker.com', description: 'Choose the Registry for images')
+        string(name: 'REGISTRY', defaultValue: 'registry.hub.docker.com', description: 'Choose the Registry')
         choice(name: 'BUILD_ID', choices: ['latest', '1', '5', '10'], description: 'Version to deploy on Kubernetes cluster')
+        choice(name: 'CREDS_ID', choices: ['dockerhub_creds', 'gitlab_creds'], description: 'Choose the credential ID for Registry')
         booleanParam(name: 'Build_App', defaultValue: false, description: "Should we run the 'Build App' stage?")
     }
 
@@ -51,7 +52,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_creds') {
+                    docker.withRegistry('https://registry.hub.docker.com', ${params.CREDS_ID}) {
                         app.push("${BUILD_NUMBER}")
                         app.push("latest")
                     }
