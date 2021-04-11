@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE_NAME = "serhiikalchenko/spring-petclinic-image"
-        REGISTRY = "registry.hub.docker.com"
     }
 
     parameters{
