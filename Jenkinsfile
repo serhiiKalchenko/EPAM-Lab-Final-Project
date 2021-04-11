@@ -52,7 +52,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', ${params.CREDS_ID}) {
+                    docker.withRegistry('https://registry.hub.docker.com', "${params.CREDS_ID}") {
                         app.push("${BUILD_NUMBER}")
                         app.push("latest")
                     }
