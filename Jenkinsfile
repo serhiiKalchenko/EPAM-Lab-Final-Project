@@ -8,7 +8,7 @@ pipeline {
         string(name: 'REGISTRY', defaultValue: 'registry.hub.docker.com', description: 'Choose the Registry')
         choice(name: 'BUILD_ID', choices: ['latest', '1', '5', '10'], description: 'Version to deploy on Kubernetes cluster')
         choice(name: 'CREDS_ID', choices: ['dockerhub_creds', 'gitlab_creds'], description: 'Choose the credential ID for Registry')
-        booleanParam(name: 'Build_App', defaultValue: false, description: "Should we run the 'Build App' stage?")
+        booleanParam(name: 'BUILD_APP', defaultValue: false, description: "Should we run the 'Build App' stage?")
     }
 
     stages {
@@ -26,7 +26,7 @@ pipeline {
         stage('Build App') {
             when {
                 expression {
-                    params.Build_App == true
+                    params.BUILD_APP == true
                 }
             }            
             steps {
