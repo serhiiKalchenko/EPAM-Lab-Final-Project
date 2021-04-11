@@ -1,5 +1,3 @@
-def groovy
-
 pipeline {
     agent any
     environment {
@@ -17,6 +15,7 @@ pipeline {
         stage('Show Parameters') {
             steps {
                 script {
+                    def groovy
                     groovy = load ('groovy.script')
                     groovy.showParams()
                 }
