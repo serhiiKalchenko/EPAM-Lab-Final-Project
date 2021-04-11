@@ -23,7 +23,7 @@ pipeline {
                 }
             }
         }
-        /*
+        
         stage('Push Docker Image') {
             when {
                 branch 'main'
@@ -37,7 +37,7 @@ pipeline {
                 }
             }
         }
-        
+        /*
         stage('Deploy To Kubernetes') {
             when {
                 branch 'main'
