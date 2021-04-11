@@ -72,12 +72,12 @@ pipeline {
         }
         
     }
-    
+    /*
     post {
         cleanup {
             sh "docker rmi ${params.REGISTRY}/${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
             sh "docker rmi ${params.REGISTRY}/${DOCKER_IMAGE_NAME}:latest"
         }
     }
-    
+    */
 }
