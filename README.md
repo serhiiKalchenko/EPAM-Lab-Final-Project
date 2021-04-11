@@ -8,3 +8,19 @@ This pipeline build Java application and deploy it into Kubernetes cluster.
 - Ansible: configuration infrastructure
 - Kubernetes: container orchestration tool
 - Docker: container engine
+
+### Objects:
+- Jenkins server with Ansible on board
+- Kubernetes cluster (kubeadm)
+
+### Stages of Pipeline
+- 'Show Parameters'
+- 'Build App'
+- 'Build Docker Image'
+- 'Push Docker Image'
+- 'Deploy to Kubernetes'
+
+#### Features
+- All infrastructure is up and running with one single command (Terraform and Ansible)
+- Dynamic inventory (plugin)
+- Pipeline has parameters
