@@ -21,6 +21,6 @@ This pipeline build Java application and deploy it into Kubernetes cluster.
 - 'Deploy to Kubernetes'
 
 #### Features
-- All infrastructure is up and running with one single command (Terraform and Ansible)
+- All infrastructure is started with one single command/script (Terraform and Ansible)
 - Dynamic inventory (plugin)
 - Pipeline has parameters
