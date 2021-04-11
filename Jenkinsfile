@@ -12,6 +12,14 @@ pipeline {
 
     stages {
         
+        stage('Show Parameters') {
+            steps {
+                echo "Build_App=${params.Build_App}"
+                echo "REGISTRY=${params.REGISTRY}"
+                echo "BUILD_ID=${params.BUILD_ID}"
+            }
+        }
+        
         stage('Build App') {
             when {
                 expression {
@@ -29,8 +37,6 @@ pipeline {
                 branch 'main'
             }
             steps {
-                echo "You have chosen VERSION=${params.REGISTRY}"
-                echo "You have chosen BUILD_ID=${params.BUILD_ID}"
                 script {
                     app = docker.build("${params.REGISTRY}/${DOCKER_IMAGE_NAME}")       
                 }
