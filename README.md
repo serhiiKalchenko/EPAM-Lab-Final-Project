@@ -20,7 +20,7 @@ This pipeline build Java application and deploy it into Kubernetes cluster.
 - 'Push Docker Image'
 - 'Deploy to Kubernetes'
 
-#### Features
+### Features
 - All infrastructure is started with one single command/script (Terraform and Ansible)
 - Dynamic inventory (plugin)
 - Pipeline has parameters
