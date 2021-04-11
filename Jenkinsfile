@@ -57,7 +57,7 @@ pipeline {
             }
         }
         
-        stage('Deploy To Kubernetes') {
+        stage('Deploy to Kubernetes') {
             when {
                 branch 'main'
             }
