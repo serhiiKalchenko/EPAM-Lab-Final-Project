@@ -51,7 +51,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry("https://${params.REGISTRY}", "${params.CREDS_ID}") {
+                    docker.withRegistry("${params.REGISTRY}", "${params.CREDS_ID}") {
                         app.push("${BUILD_NUMBER}")
                         app.push("latest")
                     }
