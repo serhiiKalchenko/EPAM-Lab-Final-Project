@@ -1,7 +1,6 @@
 def showParams() {
   echo "BUILD_APP=${params.BUILD_APP}"
   echo "REGISTRY=${params.REGISTRY}"
-  echo "BUILD_ID=${params.BUILD_ID}"
   echo "CREDS_ID=${params.CREDS_ID}"
 }
 
