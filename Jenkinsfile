@@ -37,7 +37,7 @@ pipeline {
                 }
             }
         }
-        /*
+        
         stage('Deploy To Kubernetes') {
             when {
                 branch 'main'
@@ -48,7 +48,7 @@ pipeline {
                 }
             }
         }
-        */
+        
     }
     
     post {
