@@ -29,6 +29,7 @@ This pipeline build Java application and deploy it into Kubernetes cluster.
 Project consists of two parts:
 1. Jenkins Pipeline
     - `Jenkinsfile`
+        - `groovy.script`
     - `Dockerfile`
     - `deploy_to_kubernetes.yml`
 2. Infrastructure as a Code (IaC)
