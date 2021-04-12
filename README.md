@@ -34,5 +34,8 @@ Project consists of two parts:
     - `deploy_to_kubernetes.yml`
 2. Infrastructure as a Code (IaC)
     - `jenkins-srv`
+        - files to run single Jenkins server
     - `kube-cluster`
+        - files to create single Kubernetes cluster
     - `all-in-one`
+        - files to run all together
