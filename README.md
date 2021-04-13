@@ -2,8 +2,6 @@
 ## CI/CD Multibranch Jenkins Pipeline to Kubernetes cluster
 This Pipeline build Java application [`spring-petclinic`](https://github.com/spring-projects/spring-petclinic) and deploy it into Kubernetes cluster.
 
-Java application: [`spring-petclinic`](https://github.com/spring-projects/spring-petclinic)
-
 ### Technologies:
 - **Docker**: container engine
 - **Jenkins**: CI/CD tool
