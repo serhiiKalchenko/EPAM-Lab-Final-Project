@@ -1,5 +1,6 @@
 IaC/**/files/aws.zip
 IaC/**/archive
+IaC/**/debug-*.yml
 IaC/**/collections/
 IaC/**/roles/gantsign.maven/
 IaC/**/roles/geerlingguy.java/
