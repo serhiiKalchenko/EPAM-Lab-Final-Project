@@ -1,0 +1,25 @@
+- name: Installing AWS-CLI!
+  hosts: tag_Name_jenkins
+  become: yes
+
+  tasks:
+    - name: Check if AWS CLI is installed
+      stat:
+        path: /usr/local/bin/aws
+      register: aws
+
+    - name: Extract 'awscli-exe-linux-x86_64.zip'
+      become: yes
+      unarchive:
+        #../files/awscli-exe-linux-x86_64.zip
+        src: ./roles/ansible/files/awscli-exe-linux-x86_64.zip
+        dest: "$HOME"
+      when: aws is not defined
+    
+    - name: Install AWS CLI
+      become: yes
+      command: ./aws/install
+      args:
+        chdir: "$HOME"
+      when: aws is not defined
+

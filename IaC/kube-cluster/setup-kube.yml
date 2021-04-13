@@ -1,0 +1,9 @@
+---
+  - name: Kubernetes cluster setup
+    hosts: tag_Srv_kubernetes
+    become: yes
+
+    roles:
+      - initial
+      - docker
+      - kubernetes

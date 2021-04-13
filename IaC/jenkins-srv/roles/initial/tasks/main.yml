@@ -1,0 +1,40 @@
+---
+# - name: Create the 'ansible_ssh_user'
+#   user: 
+#     name: "{{ ansible_ssh_user }}" 
+#     state: present
+#     create_home: yes 
+#     shell: /bin/bash
+
+# - name: Allow 'ansible_ssh_user' to have passwordless sudo
+#   lineinfile:
+#     dest: /etc/sudoers
+#     line: "{{ ansible_ssh_user }} ALL=(ALL) NOPASSWD: ALL"
+#     validate: 'visudo -cf %s'
+
+# - name: Set up authorized keys for the 'ansible_ssh_user'
+#   authorized_key: 
+#     user: "{{ ansible_ssh_user }}" 
+#     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+
+# - name: Update and upgrade OS packages
+#   apt:
+#     update_cache: yes
+#     upgrade: full
+#     autoclean: yes
+#     autoremove: yes
+    
+- name: Install all necessary apt packages
+  apt:
+    pkg:
+    - apt-transport-https
+    - ca-certificates 
+    - curl
+    - gnupg
+    - lsb-release
+    - python3
+    - python3-pip
+    - net-tools
+    - nmap
+    update_cache: yes

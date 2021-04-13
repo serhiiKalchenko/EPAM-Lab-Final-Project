@@ -1,0 +1,13 @@
+---
+- name: Jenkins setup
+  hosts: tag_Name_jenkins
+  become: yes
+
+  roles:
+     - initial
+     - docker
+     - ansible
+     - geerlingguy.java
+     - gantsign.maven
+     - geerlingguy.jenkins
+    

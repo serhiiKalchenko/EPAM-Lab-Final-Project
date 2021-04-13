@@ -1,0 +1,49 @@
+---
+# - name: Remove old versions of Docker
+#   apt:
+#     pkg:
+#     - docker
+#     - docker.io
+#     - containerd
+#     - docker-ce=5:19.03.9~3-0~ubuntu-focal
+#     - docker-ce-cli=5:19.03.9~3-0~ubuntu-focal
+#     - containerd.io
+#     state: absent
+
+- name: Add Docker’s official GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker's apt repository - 'stable'
+  apt_repository:
+    repo: "deb https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    state: present
+    filename: 'docker'
+
+- name: Install Docker version '19.03.9'
+  apt:
+    pkg:
+      - docker-ce=5:19.03.9~3-0~ubuntu-focal
+      - docker-ce-cli=5:19.03.9~3-0~ubuntu-focal
+      - containerd.io
+    state: present
+    update_cache: yes
+
+- name: Create cgroups driver for Docker - 'systemd'
+  copy:
+    src: ../files/daemon.json
+    dest: /etc/docker
+
+- name: Restart service 'docker'
+  become: yes
+  systemd:
+    name: docker
+    state: restarted
+    daemon_reload: yes
+
+- name: Add 'ansible_ssh_user' to group 'docker'
+  user:
+    name: "{{ ansible_ssh_user }}"
+    groups: docker
+    append: yes
