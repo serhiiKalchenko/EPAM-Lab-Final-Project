@@ -27,7 +27,7 @@ Ansible for that use dynamic inventory. So the user `jenkins` should have `.aws`
 
 Ansible role `ansible` do it all automatically, but it needs to have `aws.zip` file in its folder `files`.
 
-Archive your folder `.aws` from your home dir and put file `aws.zip` into any `ansible` role you use (`./roles/ansible/files`).
+Archive folder `.aws` from your home dir and put file `aws.zip` into any `ansible` role you use (`./roles/ansible/files`).
 
 To get `.aws` folder use AWS CLI. To configure it, run: `aws configure`
 
