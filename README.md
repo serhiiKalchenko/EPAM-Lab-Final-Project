@@ -20,6 +20,8 @@ This Pipeline build Java application [`spring-petclinic`](https://github.com/spr
 - Pipeline has parameters and groovy script
 
 ### Description of the Project
+Jenkins server run the Pipeline and with Ansible (onboard) deploy the app into Kubernetes cluster.
+
 Project consists of two parts:
 1. Jenkins Pipeline
     - `Jenkinsfile`
