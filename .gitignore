@@ -1,12 +1,12 @@
-EPAM_Final_Project.code-workspace
-archive
-files/aws.zip
-collections/
-roles/gantsign.maven/
-roles/geerlingguy.java/
-roles/geerlingguy.jenkins/
-.terraform
-terraform.tfstate
-terraform.tfstate.backup
-.terraform.lock.hcl
+**/EPAM_Final_Project.code-workspace
+**/archive
+**/files/aws.zip
+**/collections/
+**/roles/gantsign.maven/
+**/roles/geerlingguy.java/
+**/roles/geerlingguy.jenkins/
+**/.terraform
+**/terraform.tfstate
+**/terraform.tfstate.backup
+**/.terraform.lock.hcl
 
