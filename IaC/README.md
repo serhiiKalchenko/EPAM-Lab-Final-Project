@@ -25,3 +25,6 @@ Ansible role `ansible` do it all automatically, but it needs to have `aws.zip` f
 
 So archive your folder `.aws` from your home dir and put it into any `ansible` role you use (`./roles/ansible/files`).
 
+To get `.aws` folder use AWS CLI. To configure it, run: `aws configure`
+
+You can choose credentials any user you made in AWS (IAM). Permissions (policy): `AmazonEC2ReadOnlyAccess` 
