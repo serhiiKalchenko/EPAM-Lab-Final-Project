@@ -1,9 +1,10 @@
 # EPAM-Lab-Final-Project
 ## CI/CD Multibranch Jenkins Pipeline to Kubernetes cluster
-This pipeline build Java application and deploy it into Kubernetes cluster.
+This Pipeline build Java application and deploy it into Kubernetes cluster.
 
 ### Technologies:
 - **Jenkins**: CI/CD tool
+- **Maven**: build automation tool (Java)
 - **Terraform**: infrastructure provision tool
 - **Ansible**: infrastructure configuration tool
 - **Kubernetes**: container orchestration tool
