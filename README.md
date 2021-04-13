@@ -38,18 +38,18 @@ Project consists of two parts:
         - network: own VPC, subnet, gateway, route table etc.
 
 #### Stages of Pipeline
-- `Show Parameters`
-- `Build App`
-- `Build Docker Image`
-- `Push Docker Image`
-- `Deploy to Kubernetes`
+1. `Show Parameters`
+2. `Build App`
+3. `Build Docker Image`
+4. `Push Docker Image`
+5. `Deploy to Kubernetes`
 
 #### Plugins of Jenkins
-- Pipeline
-- GitHub
-- GitHub Branch Source
-- Docker
-- Docker Pipeline
-- Blue Ocean
+- `Pipeline`
+- `GitHub`
+- `GitHub Branch Source`
+- `Docker`
+- `Docker Pipeline`
+- `Blue Ocean`
 
 
