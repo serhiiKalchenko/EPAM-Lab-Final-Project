@@ -6,7 +6,7 @@ pipeline {
 
     parameters{
         string(name: 'REGISTRY', defaultValue: 'registry.hub.docker.com', description: 'Choose the Registry')
-        choice(name: 'CREDS_ID', choices: ['dockerhub_creds', 'gitlab_creds'], description: 'Choose the credential ID for Registry')
+        choice(name: 'CREDS_ID', choices: ['dockerhub_creds', 'gitlab_creds'], description: "Choose the credential ID for 'REGISTRY'")
         booleanParam(name: 'BUILD_APP', defaultValue: false, description: "Should we run the 'Build App' stage?")
     }
 
