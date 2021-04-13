@@ -32,7 +32,7 @@ Project consists of two parts:
         - `groovy.script`
     - `Dockerfile`
     - `deploy_to_kubernetes.yml`
-2. Infrastructure as a Code (IaC)
+2. Infrastructure as a Code (**`IaC`** folder)
     - `jenkins-srv`
         - files to run single Jenkins server
         - network: default
