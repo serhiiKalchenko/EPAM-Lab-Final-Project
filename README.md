@@ -14,6 +14,11 @@ This Pipeline build Java application [`spring-petclinic`](https://github.com/spr
 - Jenkins server with Ansible on board
 - Kubernetes cluster (kubeadm)
 
+### Features
+- All infrastructure (`IaC/`) is started with one single command (Terraform and Ansible)
+- Dynamic inventory (plugin)
+- Pipeline has parameters and groovy script
+
 ### Description of the Project
 Project consists of two parts:
 1. Jenkins Pipeline
@@ -46,10 +51,5 @@ Project consists of two parts:
 - Docker
 - Docker Pipeline
 - Blue Ocean
-
-### Features
-- All infrastructure (`IaC/`) is started with one single command (Terraform and Ansible)
-- Dynamic inventory (plugin)
-- Pipeline has parameters and groovy script
 
 
