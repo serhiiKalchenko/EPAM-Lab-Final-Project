@@ -27,7 +27,16 @@ Jenkins server use Ansible to deploy app into Kubernetes cluster.
 
 Ansible for that use dynamic inventory. So the user `jenkins` should have `.aws` at his home dir to do that.
 
-Ansible role `ansible` do it all automatically, but it needs to have `aws.zip` file in its folder `files`.
+Ansible role `ansible` do it all automatically:
+```
+- name: Extract 'aws.zip' to Jenkins home dir
+  become: yes
+  unarchive:
+    src: ../files/aws.zip
+    dest: /home/jenkins
+  when: not aws_creds.stat.exists
+```
+but it needs to have `aws.zip` file in its folder `files`.
 
 Archive folder `.aws` from your home dir and put file `aws.zip` into any `ansible` role you use (`./roles/ansible/files`).
 
