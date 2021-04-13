@@ -22,7 +22,7 @@ This Pipeline build Java application [`spring-petclinic`](https://github.com/spr
 - `Deploy to Kubernetes`
 
 ### Features
-- All infrastructure (`IaC/`) is started with one single command/script (Terraform and Ansible)
+- All infrastructure (`IaC/`) is started with one single command (Terraform and Ansible)
 - Dynamic inventory (plugin)
 - Pipeline has parameters and groovy script
 
