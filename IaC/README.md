@@ -15,7 +15,7 @@ You can run all objects separately or all together:
     - `./make-kube.sh`
     - `./make-it-all.sh`
 
-## Credentials (config)
+### Credentials (config)
 Jenkins server use Ansible to deploy into Kubernetes cluster.
 
 Ansible for that use dynamic inventory. So the user `jenkins` should have `.aws` at his home dir to do that.
