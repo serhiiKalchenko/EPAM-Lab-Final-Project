@@ -1,4 +1,4 @@
-IaC/**/EPAM_Final_Project.code-workspace
+IaC/**/files/aws.zip
 IaC/**/archive
 IaC/**/collections/
 IaC/**/roles/gantsign.maven/
@@ -8,4 +8,4 @@ IaC/**/.terraform
 IaC/**/terraform.tfstate
 IaC/**/terraform.tfstate.backup
 IaC/**/.terraform.lock.hcl
-
+IaC/**/EPAM_Final_Project.code-workspace
