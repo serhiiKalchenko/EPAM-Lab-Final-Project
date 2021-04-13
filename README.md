@@ -37,14 +37,14 @@ Project consists of two parts:
         - files to run all together
         - network: own VPC, subnet, gateway, route table etc.
 
-#### Stages of Pipeline
+### Stages of Pipeline
 1. `Show Parameters`
 2. `Build App`
 3. `Build Docker Image`
 4. `Push Docker Image`
 5. `Deploy to Kubernetes`
 
-#### Plugins of Jenkins
+### Plugins of Jenkins
 - `Pipeline`
 - `GitHub`
 - `GitHub Branch Source`
