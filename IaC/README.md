@@ -17,7 +17,10 @@ You can run all objects separately or all together:
     - `./make-it-all.sh`
 
 ### Credentials
-Jenkins server use Ansible to deploy into Kubernetes cluster.
+- file `aws.zip` with AWS credentials should be in any `ansible` role (`./roles/ansible/files`)
+
+#### Explanations
+Jenkins server use Ansible to deploy app into Kubernetes cluster.
 
 Ansible for that use dynamic inventory. So the user `jenkins` should have `.aws` at his home dir to do that.
 
