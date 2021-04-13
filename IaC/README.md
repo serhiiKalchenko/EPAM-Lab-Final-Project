@@ -4,7 +4,7 @@ You can run all objects separately or all together:
 - `kube-cluster`
 - `all-in-one`
 
-## How to use
+## How to use it
 1. git clone repo
 2. Configure credentials (`aws.zip`) for accessing AWS (see below)
 3. Configure Ansible roles and dynamic inventory plugin 
