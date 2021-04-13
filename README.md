@@ -1,6 +1,6 @@
 # EPAM-Lab-Final-Project
 ## CI/CD Multibranch Jenkins Pipeline to Kubernetes cluster
-This Pipeline build Java application and deploy it into Kubernetes cluster.
+This Pipeline build Java application [`spring-petclinic`](https://github.com/spring-projects/spring-petclinic) and deploy it into Kubernetes cluster.
 
 Java application: [`spring-petclinic`](https://github.com/spring-projects/spring-petclinic)
 
