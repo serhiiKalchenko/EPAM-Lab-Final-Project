@@ -1,3 +1,5 @@
+IaC/all-in-one/roles/ansible/files/aws.zip
+IaC/jenkins-srv/roles/ansible/files/aws.zip
 IaC/**/files/aws.zip
 IaC/**/archive
 IaC/**/collections/
