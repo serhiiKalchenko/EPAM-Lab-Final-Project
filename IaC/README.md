@@ -8,9 +8,10 @@ You can run all objects separately or all together:
 1. git clone repo
 2. Configure credentials (`aws.zip`) for accessing AWS (see below)
 3. Configure Ansible roles and dynamic inventory plugin 
-    - run `./install_roles_plugin.sh` in folder you wanna use (`jenkins-srv`, `kube-cluster`, `all-in-one`)
-4. Initiate Terraform: `terraform init`
-5. Run the object you choose
+    - run `./install_roles_plugin.sh` in folder you wanna use (`jenkins-srv` or `kube-cluster` or `all-in-one`)
+4. Initiate Terraform: 
+    - run `terraform init`
+6. Run the object you choose
     - `./make-jenkins.sh`
     - `./make-kube.sh`
     - `./make-it-all.sh`
