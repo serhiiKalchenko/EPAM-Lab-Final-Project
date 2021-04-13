@@ -44,4 +44,10 @@ To get `.aws` folder use AWS CLI. To configure it, run: `aws configure`
 
 You can choose credentials any user you made in AWS (IAM). 
 
-Permissions (policy): `AmazonEC2ReadOnlyAccess` 
+Permissions (policy): `AmazonEC2ReadOnlyAccess`
+
+### Ansible roles
+- `initial`
+- `docker`
+- `ansible`
+- `kubernetes`
