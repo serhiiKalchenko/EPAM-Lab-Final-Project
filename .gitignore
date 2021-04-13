@@ -1,4 +1,5 @@
 IaC/**/files/aws.zip
+IaC/**/.aws
 IaC/**/archive
 IaC/**/debug-*.yml
 IaC/**/collections/
