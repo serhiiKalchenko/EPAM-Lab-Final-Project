@@ -24,7 +24,7 @@ This Pipeline build Java application [`spring-petclinic`](https://github.com/spr
 ### Features
 - All infrastructure is started with one single command/script (Terraform and Ansible)
 - Dynamic inventory (plugin)
-- Pipeline has parameters
+- Pipeline has parameters and groovy script
 
 ### Description of the Project
 Project consists of two parts:
