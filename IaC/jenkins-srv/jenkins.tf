@@ -9,14 +9,14 @@ terraform {
 
 # Installing Jenkins server with Java, Maven and Docker
 provider "aws" {
-  region = "us-west-1"
+  region = var.aws_region
 }
 
 # Creating a new Key Pair
-resource "aws_key_pair" "main" {
+resource "aws_key_pair" "jenkins" {
 
   # Name of the Key
-  key_name = "EPAM_Final_Project_key"
+  key_name = "jenkins_key"
 
   # Adding the SSH public key to authorized keys!
   public_key = file("~/.ssh/id_rsa.pub")
@@ -49,7 +49,7 @@ resource "aws_security_group" "jenkins" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["217.147.173.191/32"]
+    cidr_blocks = var.my_ip_list
   }
 
   ingress {
@@ -57,12 +57,7 @@ resource "aws_security_group" "jenkins" {
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
-    cidr_blocks = [
-      "217.147.173.191/32",
-      "192.30.252.0/22",
-      "185.199.108.0/22",
-      "140.82.112.0/20"
-    ]
+    cidr_blocks = var.ip_white_list
   }
 
   ingress {
@@ -88,7 +83,7 @@ resource "aws_security_group" "jenkins" {
 resource "aws_instance" "jenkins" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t2.small"
-  key_name               = "EPAM_Final_Project_key"
+  key_name               = aws_key_pair.jenkins.key_name
   vpc_security_group_ids = [aws_security_group.jenkins.id]
 
   provisioner "remote-exec" {
@@ -107,7 +102,7 @@ resource "aws_instance" "jenkins" {
     Name    = "jenkins"
     Srv     = "jenkins"
     Role    = "jenkins_control"
-    Project = "EPAM_Final_project"
+    Project = var.project_name
   }
 }
 

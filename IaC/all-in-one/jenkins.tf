@@ -9,7 +9,7 @@ resource "aws_security_group" "jenkins" {
   vpc_id = aws_vpc.main.id
 
   name        = "Jenkins"
-  description = "Allow ports: 22, 8080"
+  description = "Allow ports: 22, 8080, all internal traffic"
 
   # Created an inbound rule for ping
   ingress {
@@ -17,7 +17,7 @@ resource "aws_security_group" "jenkins" {
     from_port   = 0
     to_port     = 0
     protocol    = "ICMP"
-    cidr_blocks = ["217.147.173.191/32"]
+    cidr_blocks = var.my_ip_list
   }
 
   ingress {
@@ -25,7 +25,7 @@ resource "aws_security_group" "jenkins" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["217.147.173.191/32"]
+    cidr_blocks = var.my_ip_list
   }
 
   ingress {
@@ -33,12 +33,7 @@ resource "aws_security_group" "jenkins" {
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
-    cidr_blocks = [
-      "217.147.173.191/32",
-      "192.30.252.0/22",
-      "185.199.108.0/22",
-      "140.82.112.0/20"
-    ]
+    cidr_blocks = var.ip_white_list
   }
 
   ingress {
@@ -46,7 +41,7 @@ resource "aws_security_group" "jenkins" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["10.10.10.0/24"]
+    cidr_blocks = var.vpc_subnet_list
   }
 
   # any port from inside to outside allowed
@@ -63,8 +58,6 @@ resource "aws_security_group" "jenkins" {
   }
 }
 
-
-
 resource "aws_instance" "jenkins" {
 
   depends_on = [
@@ -75,11 +68,11 @@ resource "aws_instance" "jenkins" {
 
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t2.small"
-  key_name               = "EPAM_Final_Project_key"
+  key_name               = aws_key_pair.main.key_name
   subnet_id              = aws_subnet.main.id
   vpc_security_group_ids = [aws_security_group.jenkins.id]
 
-  private_ip = "10.10.10.10"
+  private_ip = var.jenkins_private_ip
 
   # Set hostnames
   provisioner "remote-exec" {
@@ -98,6 +91,6 @@ resource "aws_instance" "jenkins" {
     Name    = "jenkins"
     Srv     = "jenkins"
     Role    = "jenkins_control"
-    Project = "EPAM_Final_project"
+    Project = var.project_name
   }
 }

@@ -18,7 +18,7 @@ resource "aws_security_group" "kube_cluster" {
     from_port   = 0
     to_port     = 0
     protocol    = "ICMP"
-    cidr_blocks = ["217.147.173.191/32"]
+    cidr_blocks = var.my_ip_list
   }
 
   ingress {
@@ -26,7 +26,7 @@ resource "aws_security_group" "kube_cluster" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["217.147.173.191/32"]
+    cidr_blocks = var.my_ip_list
   }
 
   ingress {
@@ -34,7 +34,7 @@ resource "aws_security_group" "kube_cluster" {
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
-    cidr_blocks = ["217.147.173.191/32"]
+    cidr_blocks = var.my_ip_list
   }
 
   ingress {
@@ -42,7 +42,7 @@ resource "aws_security_group" "kube_cluster" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["10.10.10.0/24"]
+    cidr_blocks = var.vpc_subnet_list
   }
 
   egress {
@@ -67,10 +67,10 @@ resource "aws_instance" "kube_control" {
 
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.medium"
-  key_name      = "EPAM_Final_Project_key"
+  key_name      = aws_key_pair.main.key_name
 
   subnet_id  = aws_subnet.main.id
-  private_ip = "10.10.10.20"
+  private_ip = var.kube_control_private_ip
 
   vpc_security_group_ids = [aws_security_group.kube_cluster.id]
 
@@ -90,25 +90,20 @@ resource "aws_instance" "kube_control" {
     Name    = "kube_control"
     Srv     = "kubernetes"
     Role    = "control"
-    Project = "EPAM_Final_project"
+    Project = var.project_name
   }
 }
 
-resource "aws_instance" "kube_worker_1" {
 
-  depends_on = [
-    aws_vpc.main,
-    aws_subnet.main,
-    aws_security_group.jenkins
-  ]
 
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.medium"
-  key_name      = "EPAM_Final_Project_key"
+resource "aws_instance" "kube_worker" {
+  count = var.worker_nodes_num
+  ami   = data.aws_ami.ubuntu.id
 
-  subnet_id  = aws_subnet.main.id
-  private_ip = "10.10.10.21"
+  subnet_id = aws_subnet.main.id
 
+  instance_type          = "t2.medium"
+  key_name               = aws_key_pair.main.key_name
   vpc_security_group_ids = [aws_security_group.kube_cluster.id]
 
   provisioner "remote-exec" {
@@ -124,49 +119,10 @@ resource "aws_instance" "kube_worker_1" {
   }
 
   tags = {
-    Name    = "kube_worker_1"
+    Name    = join("_", ["kube_worker", count.index + 1])
     Srv     = "kubernetes"
     Role    = "worker"
-    Project = "EPAM_Final_project"
+    Project = var.project_name
   }
 }
-
-resource "aws_instance" "kube_worker_2" {
-
-  depends_on = [
-    aws_vpc.main,
-    aws_subnet.main,
-    aws_security_group.jenkins
-  ]
-
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.medium"
-  key_name      = "EPAM_Final_Project_key"
-
-  subnet_id  = aws_subnet.main.id
-  private_ip = "10.10.10.22"
-
-  vpc_security_group_ids = [aws_security_group.kube_cluster.id]
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo hostnamectl set-hostname ${self.tags.Name}"
-    ]
-    connection {
-      host        = self.public_ip
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("~/.ssh/id_rsa")
-    }
-  }
-
-  tags = {
-    Name    = "kube_worker_2"
-    Srv     = "kubernetes"
-    Role    = "worker"
-    Project = "EPAM_Final_project"
-  }
-}
-
-
 
