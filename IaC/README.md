@@ -28,14 +28,9 @@ In any `ansible` role (`./roles/ansible/files`) should be the file with AWS cred
 <details>
 <summary> Explanations: </summary>
 Here is used the concept of shared credentials file.
-More info about AWS credentials here:
-    https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
-
-Jenkins server use Ansible to deploy app into Kubernetes cluster.
-
-Ansible for that use dynamic inventory. So the user `jenkins` should have `.aws` at his home dir to do that.
-
-Ansible role `ansible` do it all automatically:
+    
+Archive folder `.aws` from your home dir and put the file `aws.zip` into any `ansible` role you use (`./roles/ansible/files`).
+Ansible role `ansible` take this credentials file and copy it in Jenkins home dir:
 ```
 - name: Extract 'aws.zip' to Jenkins home dir
   become: yes
@@ -44,11 +39,11 @@ Ansible role `ansible` do it all automatically:
     dest: /home/jenkins
   when: not aws_creds.stat.exists
 ```
-but it needs to have `aws.zip` file in its folder `files`.
+Jenkins needs it because it use Ansible with Dynamic inventory (`hosts_aws_ec2.yml`)
 
-Archive folder `.aws` from your home dir and put file `aws.zip` into any `ansible` role you use (`./roles/ansible/files`).
 
-To get `.aws` folder use AWS CLI. To configure it, run: `aws configure`
+More info about AWS credentials here:
+https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 
 You can choose credentials of any user you made in AWS (IAM). 
 
