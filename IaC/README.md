@@ -47,7 +47,7 @@ Archive folder `.aws` from your home dir and put file `aws.zip` into any `ansibl
 
 To get `.aws` folder use AWS CLI. To configure it, run: `aws configure`
 
-You can choose credentials any user you made in AWS (IAM). 
+You can choose credentials of any user you made in AWS (IAM). 
 
 Permissions (policy): `AmazonEC2ReadOnlyAccess`
 </details>
