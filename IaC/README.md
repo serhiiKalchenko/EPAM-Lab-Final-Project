@@ -25,7 +25,9 @@ You can run all objects separately or all together:
 In any `ansible` role (`./roles/ansible/files`) should be the file with AWS credentials:
 - `aws.zip` 
 
-#### Explanations
+<details>
+Explanations
+<summary>
 Jenkins server use Ansible to deploy app into Kubernetes cluster.
 
 Ansible for that use dynamic inventory. So the user `jenkins` should have `.aws` at his home dir to do that.
@@ -48,7 +50,8 @@ To get `.aws` folder use AWS CLI. To configure it, run: `aws configure`
 You can choose credentials any user you made in AWS (IAM). 
 
 Permissions (policy): `AmazonEC2ReadOnlyAccess`
-
+</summary>
+</details>
 ### Ansible roles
 - `initial`
 - `docker`
