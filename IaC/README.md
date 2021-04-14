@@ -3,8 +3,11 @@ Here is all infrastructure for this Project.
 
 You can run all objects separately or all together:
 - `jenkins-srv`
+    - network: default
 - `kube-cluster`
+    - network: default 
 - `all-in-one`
+    - network: all network infrastructure (VPC, subnet, gateway, route table) 
 
 ## How to use it
 1. git clone repo
