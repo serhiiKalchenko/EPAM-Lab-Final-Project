@@ -28,7 +28,7 @@ In any `ansible` role (`./roles/ansible/files`) should be the file with AWS cred
 <details>
 <summary> Explanations: </summary>
 Here is used the concept of shared credentials file.
-    
+[`spring-petclinic`](https://github.com/spring-projects/spring-petclinic)    
 Archive folder `.aws` from your home dir and put the file `aws.zip` into any `ansible` role you use (`./roles/ansible/files`).
 Ansible role `ansible` take this credentials file and copy it in Jenkins home dir:
 ```
