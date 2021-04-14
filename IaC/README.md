@@ -31,7 +31,7 @@ Here is used the concept of shared credentials file.
   
 Archive folder `.aws` from your home dir and put the file `aws.zip` into any `ansible` role you use (`./roles/ansible/files`).
 
-Ansible role `ansible` take this credentials file and copy it in Jenkins home dir:
+Ansible role `ansible` take this credentials file and copy it in `jenkins` user home dir:
 ```
 - name: Extract 'aws.zip' to Jenkins home dir
   become: yes
