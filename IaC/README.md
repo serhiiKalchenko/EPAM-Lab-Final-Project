@@ -28,7 +28,8 @@ In any `ansible` role (`./roles/ansible/files`) should be the file with AWS cred
 <details>
 <summary> Explanations: </summary>
 Here is used the concept of shared credentials file.
-More info about AWS credentials [`here`](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+More info about AWS credentials here:
+    https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html
 
 Jenkins server use Ansible to deploy app into Kubernetes cluster.
 
