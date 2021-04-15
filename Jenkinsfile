@@ -6,6 +6,9 @@ pipeline {
     stages {
         
         stage('Build App') {
+            when {
+                branch 'main'
+            }
             steps {
                 echo 'Running build automation'
                 sh './mvnw package'
