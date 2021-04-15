@@ -15,3 +15,9 @@ variable "my_ip_list" {
   type        = list(string)
   default     = ["217.147.173.191/32"]
 }
+
+variable "worker_nodes_num" {
+  description = "Number of Worker nodes in Kubernetes cluster"
+  type        = number
+  default     = 1
+}

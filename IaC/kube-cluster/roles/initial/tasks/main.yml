@@ -12,10 +12,10 @@
 #     line: "{{ ansible_ssh_user }} ALL=(ALL) NOPASSWD: ALL"
 #     validate: 'visudo -cf %s'
 
-- name: Set up authorized keys for the 'ansible_ssh_user'
-  authorized_key: 
-    user: "{{ ansible_ssh_user }}" 
-    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+# - name: Set up authorized keys for the 'ansible_ssh_user'
+#   authorized_key: 
+#     user: "{{ ansible_ssh_user }}" 
+#     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
 
 # - name: Update and upgrade OS packages

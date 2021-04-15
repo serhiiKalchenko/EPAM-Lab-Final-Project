@@ -107,11 +107,7 @@ resource "aws_instance" "kube_control" {
   }
 }
 
-variable "worker_nodes_num" {
-  description = "Number of Worker nodes in Kubernetes cluster"
-  type        = number
-  default     = 2
-}
+
 
 resource "aws_instance" "kube_worker" {
   count                  = var.worker_nodes_num

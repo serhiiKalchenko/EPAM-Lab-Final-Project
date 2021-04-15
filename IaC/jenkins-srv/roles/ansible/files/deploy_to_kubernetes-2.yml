@@ -1,3 +1,5 @@
+# Running playbook with including file 'service.yml'
+---
 - name: Deployment to Kubernetes cluster!
   hosts: tag_Name_kube_control
   collections:

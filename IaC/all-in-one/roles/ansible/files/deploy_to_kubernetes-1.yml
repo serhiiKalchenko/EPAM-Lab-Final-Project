@@ -1,7 +1,13 @@
+# Ansible playbook for deployment into Kubenetes cluster 
+# You can run this command for testing:
+# ansible-playbook deploy_to_kubernetes.yml --extra-vars "DOCKER_IMAGE_NAME=serhiikalchenko/spring-petclinic-image BUILD_NUMBER=5"
+---
 - name: Deployment to Kubernetes cluster!
   hosts: tag_Name_kube_control
+
   collections:
     - kubernetes.core.k8s
+
   tasks:
     - name: Create a Deployment in Kubernetes cluster
       kubernetes.core.k8s:
@@ -15,7 +21,7 @@
             labels:
               app: spring-petclinic
           spec:
-            replicas: 5
+            replicas: 3
             selector:
               matchLabels:
                 app: spring-petclinic
@@ -26,7 +32,7 @@
               spec:
                 containers:
                 - name: spring-petclinic
-                  image: "serhiikalchenko/spring-petclinic-image:latest"
+                  image: "{{ DOCKER_IMAGE_NAME }}:{{ BUILD_NUMBER }}"
                   ports:
                   - containerPort: 8080
 

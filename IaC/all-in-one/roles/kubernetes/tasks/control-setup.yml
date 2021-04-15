@@ -1,9 +1,15 @@
 ---
+- name: Check if '.kube' exist
+  stat:
+    path: "/home/{{ ansible_ssh_user }}/.kube"
+  register: kube_dir
+
 - name: Copy 'kube-config.yml'
   become: yes
   copy:
     src: ../files/kube-config.yml
     dest: "$HOME"
+  when: not kube_dir.stat.exists
 
 - name: Initialize a Control node (cluster)
   become: yes
@@ -11,6 +17,7 @@
   args:
     chdir: "$HOME"
     creates: cluster_initialized.txt
+  when: not kube_dir.stat.exists
 
 - name: Create .kube directory
   become: yes
@@ -20,6 +27,7 @@
     mode: 0755
     owner: "{{ ansible_ssh_user }}"
     group: "{{ ansible_ssh_user }}"
+  when: not kube_dir.stat.exists
 
 - name: Create a kube config
   become: yes
@@ -29,10 +37,12 @@
     dest: "/home/{{ ansible_ssh_user }}/.kube/config"
     owner: "{{ ansible_ssh_user }}"
     group: "{{ ansible_ssh_user }}"
+  when: not kube_dir.stat.exists
 
 - name: Setup a Pod network
   become: no
   command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+  when: not kube_dir.stat.exists
   
 
 # Get 'kubeadm join' command and set it as fact to all Worker nodes 
