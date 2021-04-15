@@ -125,6 +125,9 @@
     <resources>
         <resource>
             <directory>src</directory>
+            <excludes>
+                <exclude>IaC/**</exclude>
+            </excludes>
         </resource>
     </resources>
     <plugins>
