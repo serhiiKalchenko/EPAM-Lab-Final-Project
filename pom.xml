@@ -126,7 +126,7 @@
         <resource>
             <directory>src</directory>
             <excludes>
-                <exclude>IaC/**</exclude>
+                <exclude>IaC</exclude>
             </excludes>
         </resource>
     </resources>
