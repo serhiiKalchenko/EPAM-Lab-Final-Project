@@ -122,6 +122,11 @@
   </dependencies>
 
   <build>
+    <resources>
+        <resource>
+            <directory>src</directory>
+        </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>io.spring.javaformat</groupId>
