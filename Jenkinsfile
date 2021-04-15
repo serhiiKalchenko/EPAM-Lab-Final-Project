@@ -24,6 +24,7 @@ pipeline {
         
         stage('Build App') {
             when {
+                branch 'main'
                 expression {
                     params.BUILD_APP == true
                 }
