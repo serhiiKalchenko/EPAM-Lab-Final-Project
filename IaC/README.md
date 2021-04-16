@@ -52,6 +52,10 @@ Permissions (policy): `AmazonEC2ReadOnlyAccess`
 
 ### Ansible roles
 - `initial`
+    - installs necessary packages
 - `docker`
+    - installs Docker runtime
 - `ansible`
+    - configures Ansible for Jenkins server
 - `kubernetes`
+    - creates Kubernetes cluster
