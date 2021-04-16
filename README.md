@@ -22,7 +22,7 @@ This Pipeline build Java application [`spring-petclinic`](https://github.com/spr
 
 
 ### Description of the Project
-Jenkins server run the Pipeline and with Ansible (onboard) deploy the app into Kubernetes cluster.
+Jenkins server with Ansible (onboard) run the Pipeline and deploy the app into Kubernetes cluster.
 
 Project consists of two parts:
 1. Jenkins Pipeline
