@@ -10,7 +10,7 @@ You can run all objects separately or all together:
     - network: all network infrastructure (VPC, subnet, gateway, route table) 
 
 ## How to use it
-1. git clone repo
+1. `git clone` repo
 2. Configure credentials (`aws.zip`) for accessing AWS (see below)
 3. Configure Ansible roles and dynamic inventory plugin in folder you wanna use (`jenkins-srv` or `kube-cluster` or `all-in-one`)
     - `./install_roles_plugin.sh` 
