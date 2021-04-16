@@ -14,7 +14,9 @@ There are 2 options:
 ## How to use it
 1. `git clone` repo
 2. Configure credentials (`aws.zip`) for accessing AWS (see below)
-3. Run command (script):
+3. Configure Ansible:
+    - `./install_roles_plugin.sh`
+4. Run command (script):
     - `./make-all.sh`
 
 ### Credentials
