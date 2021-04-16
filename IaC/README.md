@@ -8,7 +8,7 @@ There are 2 options:
     - infrastructure with own network: VPC, subnet, gateway, route table, etc. 
 
 ## How to use it
-1. git clone repo
+1. `git clone` repo
 2. Configure credentials (`aws.zip`) for accessing AWS (see below)
 3. Run command (script):
     - `./make-all.sh`
