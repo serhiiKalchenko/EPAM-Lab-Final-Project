@@ -1,4 +1,0 @@
----
-# This would ensure that the "docker" role is run before our "kubernetes" role. 
-dependencies:
-  - docker

@@ -1,0 +1,48 @@
+---
+- name: Install openshift module
+  pip:
+    name: openshift
+
+- name: Add Kubernetes official GPG key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: Add Kubernetes apt repository - 'main'
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+    filename: 'kubernetes'
+
+#------------------------------------------
+- name: Install - kubelet, kubeadm, kubectl
+  apt:
+    pkg:
+      - kubelet
+      - kubeadm
+      - kubectl
+    update_cache: yes
+
+- name: Prevent from being upgraded or removed - kubelet, kubeadm, kubectl
+  dpkg_selections:
+    name: "{{ item }}"
+    selection: hold
+  with_items:
+      - kubelet
+      - kubeadm
+      - kubectl
+
+- name: Enable autocomplete for 'kubectl' command
+  shell: "echo 'source <(kubectl completion bash)' >> /home/{{ ansible_ssh_user }}/.bashrc"
+
+# Set up Control node.
+- include_tasks: control-setup.yml
+  when: kubernetes_role == 'control'
+
+# Set up Worker node.
+- include_tasks: worker-setup.yml
+  when: kubernetes_role == 'worker'
+
+# Copy sample files.
+- include_tasks: copy-files.yml
+  when: kubernetes_role == 'control'
