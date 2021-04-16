@@ -16,7 +16,8 @@ There are 2 options:
 2. Configure credentials (`aws.zip`) for accessing AWS (see below)
 3. Configure Ansible and dynamic inventory plugin:
     - `./install_roles_plugin.sh`
-4. Run command (script):
+4. Configure `variables.tf` with your settings
+5. Run command (script):
     - `./make-all.sh`
 
 ### Credentials
