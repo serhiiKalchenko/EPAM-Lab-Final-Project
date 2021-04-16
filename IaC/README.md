@@ -13,7 +13,7 @@ There are 2 options:
 
 ## How to use it
 1. `git clone` repo
-2. Configure credentials (`aws.zip`) for accessing AWS (see below)
+2. Configure credentials (`aws.zip`) for accessing AWS (see *Credentials* below)
 3. Configure Ansible and dynamic inventory plugin:
     - `./install_roles_plugin.sh`
 4. Configure `variables.tf` with your settings
