@@ -1,13 +1,11 @@
 # Infrastructure as a Code
 Here is all infrastructure for this Project.
 
-You can run all objects separately or all together:
-- `jenkins-srv`
-    - network: default
-- `kube-cluster`
-    - network: default 
-- `all-in-one`
-    - network: all network infrastructure (VPC, subnet, gateway, route table) 
+There are 2 options:
+1. `infra-default`
+    - infrastructure with default network
+2. `infra-network`
+    - infrastructure with own network: VPC, subnet, gateway, route table, etc. 
 
 ## How to use it
 1. git clone repo
