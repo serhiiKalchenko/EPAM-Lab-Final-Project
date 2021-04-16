@@ -10,14 +10,8 @@ There are 2 options:
 ## How to use it
 1. git clone repo
 2. Configure credentials (`aws.zip`) for accessing AWS (see below)
-3. Configure Ansible roles and dynamic inventory plugin in folder you wanna use (`jenkins-srv` or `kube-cluster` or `all-in-one`)
-    - `./install_roles_plugin.sh` 
-4. Initiate Terraform: 
-    - `terraform init`
-6. Run one of these scripts (the object you chose):
-    - `./make-jenkins.sh`
-    - `./make-kube.sh`
-    - `./make-it-all.sh`
+3. Run command (script):
+    - `./make-all.sh`
 
 ### Credentials
 In any `ansible` role (`./roles/ansible/files`) should be the file with AWS credentials:
