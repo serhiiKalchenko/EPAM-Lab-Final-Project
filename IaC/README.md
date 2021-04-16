@@ -1,6 +1,10 @@
 # Infrastructure as a Code
 Here is all infrastructure for this Project.
 
+All resources are created with Terraform and configured with Ansible.
+
+Infrastructure in Terraform was made with composable, sharable and reusable modules.
+
 There are 2 options:
 1. `infra-default`
     - infrastructure with default network
