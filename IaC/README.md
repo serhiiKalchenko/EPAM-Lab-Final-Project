@@ -3,7 +3,7 @@ Here is all infrastructure for this Project.
 
 All resources are created with **Terraform** and configured with **Ansible**.
 
-Infrastructure in Terraform was made with composable, sharable and reusable modules.
+Infrastructure in Terraform was made with composable, sharable and reusable [`modules`](https://github.com/serhiiKalchenko/terraform.git).
 
 There are 2 options:
 1. `infra-default`
