@@ -15,9 +15,11 @@ This Pipeline build Java application [`spring-petclinic`](https://github.com/spr
 - Kubernetes cluster (kubeadm)
 
 ### Features
+- Infrastructure is made by Terraform in a simple manner (branch `classic-simple`) and in the form of modules (branch `main`)
 - All infrastructure (`IaC/`) is started with one single command (Terraform and Ansible)
-- Dynamic inventory (plugin)
+- Dynamic inventory (plugin) is used
 - Pipeline has parameters and groovy script
+
 
 ### Description of the Project
 Jenkins server run the Pipeline and with Ansible (onboard) deploy the app into Kubernetes cluster.
