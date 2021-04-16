@@ -31,15 +31,10 @@ Project consists of two parts:
     - `Dockerfile`
     - `deploy_to_kubernetes.yml`
 2. Infrastructure as a Code (`IaC/` folder)
-    - `jenkins-srv`
-        - files to run single Jenkins server
-        - network: default
-    - `kube-cluster`
-        - files to create single Kubernetes cluster
-        - network: default
-    - `all-in-one`
-        - files to run all together
-        - network: own VPC, subnet, gateway, route table etc.
+    1. `infra-default`
+        - infrastructure with default network
+    2. `infra-network`
+        - infrastructure with own network: VPC, subnet, gateway, route table, etc. 
 
 ### Stages of Pipeline
 1. `Show Parameters`
